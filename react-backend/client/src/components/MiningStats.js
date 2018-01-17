@@ -37,7 +37,7 @@ class MiningStats extends Component {
 		/>
 
         {this.state.balances.map(coin =>
-          <div>{coin.coin} - {coin.confirmed}</div>
+          <div>{coin.coin} - {coin.confirmed} - ${coin.confirmed_usd_value} </div>
         )}
       </div>
     );
