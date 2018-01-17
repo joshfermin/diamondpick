@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class ApiKeyForm extends React.Component {
+class ApiKeyForm extends Component {
    render() {
     return (
       <div>

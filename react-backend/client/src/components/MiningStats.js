@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ApiKeyForm from './Form';
+import TwoLevelPieChart from './TwoLevelPieChart';
 
 class MiningStats extends Component {
   constructor(props) {
@@ -15,12 +16,9 @@ class MiningStats extends Component {
   } 
   
   handleSubmit(){
-  	console.log(this.state.apiKey);
-    fetch('/miningstats/userbalances?api_key=' + this.state.apiKey)
+    fetch('/miningstats/usdbalances?api_key=' + this.state.apiKey)
       .then(res => res.json())
       .then(balances => {
-        console.log(balances);
-        balances = balances.getuserallbalances.data;
         this.setState({ balances })
       });
   }
@@ -28,7 +26,7 @@ class MiningStats extends Component {
   render() {
     return (
       <div>
-        <h1>Coins</h1>
+        <h1>diamondpick</h1>
 
         <ApiKeyForm
         	value={this.state.apiKey}
@@ -36,9 +34,7 @@ class MiningStats extends Component {
         	onSubmit={this.handleSubmit}
 		/>
 
-        {this.state.balances.map(coin =>
-          <div>{coin.coin} - {coin.confirmed} - ${coin.confirmed_usd_value} </div>
-        )}
+		<TwoLevelPieChart balances={this.state.balances}/>
       </div>
     );
   }
