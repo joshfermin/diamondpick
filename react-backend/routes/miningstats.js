@@ -55,7 +55,7 @@ router.get('/usdbalances', function(req,res,next) {
               let usdPrice = response.data[0].price_usd;
 
               dataObj['name'] = coin.coin;
-              dataObj['value'] = usdPrice * coin.confirmed + usdPrice * coin.unconfirmed + usdPrice * coin.ae_confirmed + usdPrice * coin.ae_unconfirmed + usdPrice * coin.exchange;
+              dataObj['value'] = parseFloat((usdPrice * coin.confirmed + usdPrice * coin.unconfirmed + usdPrice * coin.ae_confirmed + usdPrice * coin.ae_unconfirmed + usdPrice * coin.exchange).toFixed(2));
               data.push(dataObj);
             })
             .catch((err) => {

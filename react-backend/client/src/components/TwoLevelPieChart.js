@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {PieChart, Pie, Sector} from 'recharts';
+import {PieChart, Pie, Sector, Cell} from 'recharts';
+import {COLORS} from '../constants/MiningConstants';
 
 const renderActiveShape = (props) => {
   const RADIAN = Math.PI / 180;
@@ -75,7 +76,12 @@ class TwoLevelPieChart extends Component {
           outerRadius={80} 
           fill="#8884d8"
           onMouseEnter={this.onPieEnter}
-        />
+        >
+          {this.props.balances.map((entry, index) =>
+            // var index = index;
+            <Cell fill={COLORS[index % COLORS.length]}/>
+          )};
+        </Pie>
        </PieChart>
     );
   }
